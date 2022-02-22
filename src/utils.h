@@ -1,2 +1,2 @@
 #pragma once
-void clean_exit(const char *error_msg);
+void clean_exit(const char *, const char *);

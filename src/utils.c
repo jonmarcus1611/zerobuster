@@ -3,8 +3,8 @@
 #include "render.h"
 
 void 
-clean_exit(const char *error_msg)
+clean_exit(const char *error_msg, const char *error_msg_2)
 {
-	zero_log(error_msg);
+	zero_log(error_msg, error_msg_2);
 	exit(1);
 }
