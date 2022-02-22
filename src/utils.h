@@ -1,2 +1,4 @@
 #pragma once
-void clean_exit(const char *, const char *);
+#include <aio.h>
+
+void *safe_malloc(size_t);

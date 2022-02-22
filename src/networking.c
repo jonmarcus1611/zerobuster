@@ -35,8 +35,7 @@ create_url(char *host, char *path)
 {
 	/* Allocate 2 extra bytes for back slash and null byte */
 	/* Url encoding can take a maximum of 8 bytes per unescaped character */
-	char *url = malloc(strlen(host) + (strlen(path) * 8) + 2);
-	if (!url) clean_exit("Error allocating memory!\n", NULL);
+	char *url = safe_malloc(strlen(host) + (strlen(path) * 8) + 2);
 
 	/* Remove bad characters such as spaces and newlines */
 	path[strcspn(path, "\n")] = 0;

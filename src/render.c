@@ -35,8 +35,7 @@ static char *
 get_time()
 {
 	time_t now = time(NULL);
-	char *time_str = malloc(sizeof(char) * 64);
-	if (!time_str) clean_exit("Error allocating memory!\n", NULL);
+	char *time_str = safe_malloc(sizeof(char) * 64);
 	strcpy(time_str, ctime(&now));
 
 	time_str[strcspn(time_str, "\n")] = 0;

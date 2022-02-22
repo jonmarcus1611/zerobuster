@@ -15,7 +15,11 @@ main(int argc, char **argv)
 	long  response_code;
 	char line[MAX_LINE_LENGTH];
 	FILE *fp = fopen(WORD_LIST, "r");
-	if (!fp) clean_exit("Unable to open wordlist!\n", WORD_LIST);
+
+	if (NULL == fp) {
+		fprintf(stderr, "Error opening file %s\n", WORD_LIST);
+		exit(1);
+	}
 
 	/* Iterate through wordlist and send requests */
 	while(fgets(line, sizeof(line), fp)) {

@@ -2,9 +2,14 @@
 #include <stdlib.h>
 #include "render.h"
 
-void 
-clean_exit(const char *error_msg, const char *error_msg_2)
+
+void *
+safe_malloc(size_t num_bytes)
 {
-	zero_log(error_msg, error_msg_2);
-	exit(1);
+	void *buffer = malloc(num_bytes);
+	if (NULL == buffer) {
+		fprintf(stderr, "Unable to allocate memory for malloc!\n");
+		exit(1);
+	}	
+	return buffer;
 }
