@@ -6,7 +6,7 @@
 
 #define WORD_LIST "word_list.txt"
 #define MAX_LINE_LENGTH 64
-
+#define HOST "http://localhost:31337"
 
 int
 main(int argc, char **argv) 
@@ -16,9 +16,10 @@ main(int argc, char **argv)
 	if (!fp) clean_exit("Unable to open wordlist!\n");
 
 	while(fgets(line, sizeof(line), fp)) {
-		printf("%s", line);
+		char *url = create_url(HOST, line);
+		printf("%s\n", url);
+		free(url);
 	}
-
 
 	fclose(fp);
 	return 0;
