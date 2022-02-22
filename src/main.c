@@ -11,10 +11,12 @@
 int
 main(int argc, char **argv) 
 {
+	/* Open wordlist */
 	char line[MAX_LINE_LENGTH];
 	FILE *fp = fopen(WORD_LIST, "r");
 	if (!fp) clean_exit("Unable to open wordlist!\n");
 
+	/* Iterate through wordlist and send requests */
 	while(fgets(line, sizeof(line), fp)) {
 		char *url = create_url(HOST, line);
 		printf("%s\n", url);

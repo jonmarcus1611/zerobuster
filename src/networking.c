@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <curl/curl.h>
+#include "utils.h"
 
 
 void *
@@ -31,6 +32,7 @@ create_url(char *host, char *path)
 	/* Allocate 2 extra bytes for back slash and null byte */
 	/* Url encoding can take a maximum of 8 bytes per unescaped character */
 	char *url = malloc(strlen(host) + (strlen(path) * 8) + 2);
+	if (!url) clean_exit("Error allocating memory!\n");
 
 	/* Remove bad characters such as spaces and newlines */
 	path[strcspn(path, "\n")] = 0;
