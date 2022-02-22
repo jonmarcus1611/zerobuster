@@ -20,10 +20,10 @@ void *
 print_response(long response_code, char *url)
 {
 	if (0 == response_code) {
-		clean_exit("Unable to connect to url:", url);
+		/* Unable to connect to server. Add error handling later */
 	}
 
-	if (4040 != response_code) {
+	if (404 != response_code) {
 		printf("%s %ld", url, response_code);
 	}
 
