@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "render.h"
 
 void 
 clean_exit(const char *error_msg)
