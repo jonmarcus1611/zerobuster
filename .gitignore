@@ -53,3 +53,4 @@ dkms.conf
 
 # Don't include precompiled binary
 zerobuster
+word_list.txt
