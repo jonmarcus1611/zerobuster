@@ -1,2 +1,1 @@
-# zerobuster
-Directory bruteforcing in C
+# ⚠️⚠️ Zerobuster is under active development ⚠️⚠️
