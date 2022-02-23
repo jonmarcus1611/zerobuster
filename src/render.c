@@ -21,6 +21,7 @@ print_response(long response_code, char *url)
 {
 	if (0 == response_code) {
 		/* Unable to connect to server. Add error handling later */
+		return NULL;
 	}
 
 	if (404 != response_code) {

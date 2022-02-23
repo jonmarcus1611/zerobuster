@@ -25,7 +25,8 @@ main(int argc, char **argv)
 	while(fgets(line, sizeof(line), fp)) {
 		char *url = create_url(HOST, line);
 		response_code = send_request(url);
-		print_response(response_code, url);
+		if (NULL != response_code)
+			print_response(response_code, url);
 		free(url);
 	}
 

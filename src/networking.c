@@ -21,7 +21,7 @@ send_request(const char *url)
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		if (curl_easy_perform(curl) == CURLE_OK) {
 			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, 
-				response_code);
+				&response_code);
 
 		} 
 		curl_easy_cleanup(curl);
