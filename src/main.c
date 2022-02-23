@@ -4,29 +4,41 @@
 #include "render.h"
 #include "networking.h"
 
-#define WORD_LIST "word_list.txt"
 #define MAX_LINE_LENGTH 64
-#define HOST "http://localhost:31337"
+
+const char *usage = "./zerobuster <host> <word_list>\n";
 
 int
 main(int argc, char **argv) 
 {
+	char *word_list;
+	char *host;
+
+	
+	/* Get arguments */
+	if (3 == argc) {
+		host = argv[1];
+		word_list = argv[2];
+	} else {
+		printf("%s", usage);
+		return 1;
+	}
+
 	/* Open wordlist */
 	long  response_code;
 	char line[MAX_LINE_LENGTH];
-	FILE *fp = fopen(WORD_LIST, "r");
+	FILE *fp = fopen(word_list, "r");
 
 	if (NULL == fp) {
-		fprintf(stderr, "Error opening file %s\n", WORD_LIST);
+		fprintf(stderr, "Error opening file %s\n", word_list);
 		exit(1);
 	}
 
 	/* Iterate through wordlist and send requests */
 	while(fgets(line, sizeof(line), fp)) {
-		char *url = create_url(HOST, line);
+		char *url = create_url(host, line);
 		response_code = send_request(url);
-		if (NULL != response_code)
-			print_response(response_code, url);
+		print_response(response_code, url);
 		free(url);
 	}
 
