@@ -27,6 +27,7 @@ send_request(const char *url)
 		curl_easy_cleanup(curl);
 	}
 
+	fclose(fp);
 	return response_code;
 }
 
@@ -41,6 +42,7 @@ create_url(char *host, char *path)
 	path[strcspn(path, "\n")] = 0;
 	path[strcspn(path, "\x0a")] = 0;
 	path[strcspn(path, "\x20")] = 0;
+	path[strcspn(path, "\x0D")] = 0;
 
 	/* Create and encode url */
 	strcpy(url, host);
