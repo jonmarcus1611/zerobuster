@@ -24,7 +24,7 @@ print_response(long response_code, char *url)
 		return NULL;
 	}
 
-	if (404 != response_code) {
+	if (404 ^ response_code) {
 		printf("%-77s %ld\n", url, response_code);
 	}
 

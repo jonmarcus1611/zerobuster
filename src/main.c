@@ -29,8 +29,14 @@ main(int argc, char **argv)
 	char line[MAX_LINE_LENGTH];
 	FILE *fp = fopen(word_list, "r");
 
-	if (NULL == fp) {
+	if (!fp) {
 		fprintf(stderr, "Error opening file %s\n", word_list);
+		exit(1);
+	}
+
+	/* Check if we connect to the supplied URL */
+	if (!send_request(host)) {
+		fprintf(stderr, "Unable to connect to host %s\n", host);
 		exit(1);
 	}
 
